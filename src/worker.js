@@ -1,0 +1,274 @@
+const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>lognseth.de - Coming Soon</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu,
+          Cantarell, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .stars {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+
+      .star {
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        background: white;
+        border-radius: 50%;
+        animation: twinkle 2s infinite;
+      }
+
+      @keyframes twinkle {
+        0%,
+        100% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 1;
+        }
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+
+      .container {
+        text-align: center;
+        color: white;
+        max-width: 600px;
+        padding: 2rem;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .logo {
+        font-size: 3rem;
+        font-weight: 300;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      .subtitle {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards 0.3s;
+      }
+
+      .message {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards 0.6s;
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 6px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 3px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards 0.9s;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #ff6b6b, #ffd93d);
+        border-radius: 3px;
+        width: 0%;
+        animation: progress 3s ease-in-out infinite;
+      }
+
+      @keyframes progress {
+        0% {
+          width: 0%;
+        }
+        50% {
+          width: 75%;
+        }
+        100% {
+          width: 0%;
+        }
+      }
+
+      .status {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards 1.2s;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .social-links {
+        margin-top: 2rem;
+        opacity: 0;
+        animation: fadeInUp 1s ease forwards 1.5s;
+      }
+
+      .social-links a {
+        color: white;
+        text-decoration: none;
+        margin: 0 1rem;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+
+      .social-links a:hover {
+        opacity: 1;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 2rem;
+        }
+        .subtitle {
+          font-size: 1.2rem;
+        }
+        .message {
+          font-size: 1rem;
+        }
+        .container {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stars"></div>
+
+    <div class="container">
+      <h1 class="logo">lognseth.de</h1>
+      <h2 class="subtitle">Coming Soon</h2>
+      <p class="message">
+        I will build a proper website... eventually.<br />
+        In the meantime, enjoy this placeholder while I procrastinate.<br /><br />
+        You can reach me on mastodon at
+        <a
+          href="https://mastodon.nu/@lognseth"
+          target="_blank"
+          style="color: #ffd93d; text-decoration: none"
+          >@lognseth@mastodon.nu</a
+        >
+      </p>
+
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
+      </div>
+      <p class="status">Progress: Thinking about it really hard...</p>
+
+      <div class="social-links">
+        <a href="#" onclick="showMessage()">Contact</a>
+        <a href="#" onclick="showMessage()">About</a>
+        <a href="#" onclick="showMessage()">Portfolio</a>
+      </div>
+    </div>
+
+    <script>
+      function createStars() {
+        const starsContainer = document.querySelector(".stars");
+        const numberOfStars = 100;
+
+        for (let i = 0; i < numberOfStars; i++) {
+          const star = document.createElement("div");
+          star.className = "star";
+          star.style.left = Math.random() * 100 + "%";
+          star.style.top = Math.random() * 100 + "%";
+          star.style.animationDelay = Math.random() * 2 + "s";
+          starsContainer.appendChild(star);
+        }
+      }
+
+      function showMessage() {
+        const messages = [
+          "Still working on it! 🚧",
+          "Check back in 2024... or 2025... or whenever",
+          "The website is in another castle 🏰",
+          "404: Motivation not found",
+          "Coming soon™",
+        ];
+        const randomMessage =
+          messages[Math.floor(Math.random() * messages.length)];
+        alert(randomMessage);
+      }
+
+      function updateStatus() {
+        const statuses = [
+          "Progress: Thinking about it really hard...",
+          "Progress: Procrastinating productively...",
+          "Progress: Coffee break in progress...",
+          "Progress: Definitely not playing video games...",
+          "Progress: Waiting for inspiration to strike...",
+          "Progress: 99% complete, just need to start...",
+        ];
+
+        const statusElement = document.querySelector(".status");
+        let currentIndex = 0;
+
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % statuses.length;
+          statusElement.textContent = statuses[currentIndex];
+        }, 4000);
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        createStars();
+        updateStatus();
+      });
+    </script>
+  </body>
+</html>`;
+
+export default {
+  async fetch(request, env, ctx) {
+    return new Response(html, {
+      headers: {
+        "content-type": "text/html;charset=UTF-8",
+      },
+    });
+  },
+};

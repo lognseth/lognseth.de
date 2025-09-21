@@ -1,0 +1,35 @@
+{
+  "name": "lognseth-landing",
+  "version": "1.0.0",
+  "description": "A simple 'coming soon' landing page with a humorous twist, deployed on Cloudflare Workers",
+  "keywords": [
+    "landing-page",
+    "cloudflare-workers",
+    "coming-soon",
+    "personal-website"
+  ],
+  "homepage": "https://lognseth.de",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lognseth/lognseth.de.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "lognseth",
+    "url": "https://mastodon.nu/@lognseth"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "preview": "wrangler deploy --env preview",
+    "login": "wrangler login",
+    "logout": "wrangler logout",
+    "status": "wrangler deployments list"
+  },
+  "devDependencies": {
+    "wrangler": "^4.38.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

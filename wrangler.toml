@@ -1,0 +1,10 @@
+name = "lognseth-landing"
+main = "src/worker.js"
+compatibility_date = "2024-01-01"
+
+[[routes]]
+pattern = "lognseth.de/*"
+zone_name = "lognseth.de"
+
+[env.production]
+name = "lognseth-landing"
