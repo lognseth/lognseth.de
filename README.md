@@ -1,6 +1,6 @@
 # lognseth.de
 
-A simple "coming soon" landing page with a humorous twist, deployed on Cloudflare Workers.
+A simple "coming soon" landing page, deployed on Cloudflare Workers.
 
 ## Live Site
 
